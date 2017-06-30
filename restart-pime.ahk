@@ -6,4 +6,3 @@ if not A_IsAdmin
 }
 Process, Close, PIMELauncher.exe
 Run, "c:\Program Files (x86)\PIME\PIMELauncher.exe"
-MsgBox, "Run successful"
