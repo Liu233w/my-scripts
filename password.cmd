@@ -1,1 +1,1 @@
-py -3 password.py
+python password.py
