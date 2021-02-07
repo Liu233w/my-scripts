@@ -1,4 +1,3 @@
-
 function liu233wInit() {
   const timer = setInterval(() => {
     if (Game && Game.playCookieClickSound) {
@@ -12,3 +11,5 @@ function liu233wInit() {
     }
   }, 500)
 }
+
+liu233wInit()
