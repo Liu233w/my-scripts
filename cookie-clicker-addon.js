@@ -1,8 +1,8 @@
-function liu233wInit() {
+window.liu233wInit = (function () {
   const timer = setInterval(() => {
     if (Game && Game.playCookieClickSound) {
       console.log('Disabling cookie clicking sound')
-      Game.playCookieClickSound = ()=>{return}
+      Game.playCookieClickSound = () => { return }
 
       // cleanup
       clearInterval(timer)
@@ -10,6 +10,6 @@ function liu233wInit() {
       console.log('waiting game loaded')
     }
   }, 500)
-}
+})
 
-liu233wInit()
+window.liu233wInit()
