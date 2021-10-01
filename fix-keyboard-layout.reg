@@ -1,0 +1,5 @@
+Windows Registry Editor Version 5.00
+
+; Fix keyboard layout problem
+; See https://superuser.com/a/1094953
+[-HKEY_USERS\.DEFAULT\Keyboard Layout\Preload]
