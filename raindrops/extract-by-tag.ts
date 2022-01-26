@@ -92,6 +92,7 @@ function buildBookmarkEntryHtml(entry: Entry) {
   return `<h3><A HREF="${entry.link}">${entry.title}</A></h3>
   <p>${entry.excerpt}</p>
   <br>
+  <br>
 `
 }
 
