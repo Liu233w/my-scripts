@@ -12,7 +12,7 @@ def main():
 	deleted_files_count = 0
 
 	# specify the path
-	path = "~/Downloads"
+	path = "/Users/shuminliu/Downloads"
 
 	# specify the days
 	days = 30
