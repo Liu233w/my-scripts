@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-import hashlib, os, getpass
+import hashlib, os, getpass, sys
 
 data = getpass.getpass(">>> ")
 out = hashlib.new('md5', data.encode('utf-8'))
 
 print(out.hexdigest())
 
-input("Press enter to exit...")
+print("Press enter to exit...", file=sys.stderr)
+input()

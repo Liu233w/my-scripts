@@ -1,0 +1,9 @@
+#!/bin/sh
+
+JQ_CMD="jq -Rr @uri"
+
+if [ $# -gt 0 ]; then
+	echo "$@" | $JQ_CMD
+else
+	$JQ_CMD
+fi
