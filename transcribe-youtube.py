@@ -3,14 +3,29 @@
 import sys
 import requests
 import json
+import time
 
-def fetch_transcription(video_url):
+def fetch_transcription(video_url, lang):
     try:
+        data = {"videoUrl": video_url, "langCode": lang}
+        if not lang:
+            del data['langCode']
+
         response = requests.post(
             'https://tactiq-apps-prod.tactiq.io/transcript',
             headers={'content-type': 'application/json'},
-            data=json.dumps({"videoUrl": video_url})
+            data=json.dumps(data)
         )
+
+        if response.status_code == 419 and lang:
+            # langCode not supported, switch to default language
+            return fetch_transcription(video_url, None)
+
+        if response.status_code == 429:
+            # too many requests
+            time.sleep(30)
+            return fetch_transcription(video_url, lang)
+
         response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
@@ -25,7 +40,7 @@ def format_time(seconds):
     return f"[{hours:02}:{minutes:02}:{seconds:02}]"
 
 def main(video_url):
-    transcription = fetch_transcription(video_url)
+    transcription = fetch_transcription(video_url, 'zh')
 
     for caption in transcription.get("captions", []):
         start = caption.get("start", "0")
