@@ -13,11 +13,11 @@ def fetch_transcription(video_url, lang):
 
         response = requests.post(
             'https://tactiq-apps-prod.tactiq.io/transcript',
-            headers={'content-type': 'application/json'},
+            headers={'Content-Type': 'application/json'},
             data=json.dumps(data)
         )
 
-        if response.status_code == 419 and lang:
+        if response.status_code in [419, 415] and lang:
             # langCode not supported, switch to default language
             return fetch_transcription(video_url, None)
 
